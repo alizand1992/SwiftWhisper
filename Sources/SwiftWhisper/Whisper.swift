@@ -175,6 +175,10 @@ public class Whisper {
         cancelCallback = completionHandler
     }
 
+    public func getLanguage() -> String {
+        return String(cString: whisper_lang_str(whisper_full_lang_id(whisperContext)))
+    }
+
     @available(iOS 13, macOS 10.15, watchOS 6.0, tvOS 13.0, *)
     public func transcribe(audioFrames: [Float]) async throws -> [Segment] {
         return try await withCheckedThrowingContinuation { cont in
