@@ -1,5 +1,7 @@
 import Foundation
 
+typealias WhisperSegment = Segment
+
 public struct Segment: Equatable, Codable {
     public let startTime: Int
     public let endTime: Int
