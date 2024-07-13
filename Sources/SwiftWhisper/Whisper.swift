@@ -43,6 +43,7 @@ public class Whisper {
         params.new_segment_callback_user_data = unmanagedSelf.toOpaque()
         params.encoder_begin_callback_user_data = unmanagedSelf.toOpaque()
         params.progress_callback_user_data = unmanagedSelf.toOpaque()
+        params.max_len = 1
 
         // swiftlint:disable line_length
         params.new_segment_callback = { (ctx: OpaquePointer?, _: OpaquePointer?, newSegmentCount: Int32, userData: UnsafeMutableRawPointer?) in

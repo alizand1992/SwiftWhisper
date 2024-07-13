@@ -5,20 +5,12 @@ import whisper_cpp
 @dynamicMemberLookup
 public class WhisperParams {
     public static let `default` = WhisperParams(strategy: .greedy)
-    public static let `tokenized` = WhisperParams(strategy: .greedy, token_timestamps: true)
 
     internal var whisperParams: whisper_full_params
     internal var _language: UnsafeMutablePointer<CChar>?
-    var token_timestamps: Bool = false
 
     public init(strategy: WhisperSamplingStrategy = .greedy) {
         self.whisperParams = whisper_full_default_params(whisper_sampling_strategy(rawValue: strategy.rawValue))
-        self.language = .auto
-    }
-
-    public init(strategy: WhisperSamplingStrategy = .greedy, token_timestamps: Bool) {
-        self.whisperParams = whisper_full_default_params(whisper_sampling_strategy(rawValue: strategy.rawValue))
-        self.token_timestamps = token_timestamps
         self.language = .auto
     }
 
