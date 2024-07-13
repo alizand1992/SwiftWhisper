@@ -13,7 +13,7 @@ public class Whisper {
     internal var cancelCallback: (() -> Void)?
 
     public init(fromFileURL fileURL: URL, withParams params: WhisperParams = .default) {
-        let whisperContextParams: whisper_context_params = whisper_context_params(use_gpu: true, flash_attn: false, gpu_device: 0, dtw_token_timestamps: true, dtw_aheads_preset: WHISPER_AHEADS_NONE, dtw_n_top: -1, dtw_aheads: whisper_aheads(n_heads: 0, heads: nil), dtw_mem_size: 1024*1024*128)
+        let whisperContextParams: whisper_context_params = whisper_context_params(use_gpu: true, flash_attn: false, gpu_device: 0, dtw_token_timestamps: true, dtw_aheads_preset: WHISPER_AHEADS_BASE, dtw_n_top: -1, dtw_aheads: whisper_aheads(n_heads: 0, heads: nil), dtw_mem_size: 1024*1024*128)
         
         self.whisperContext = fileURL.relativePath.withCString { whisper_init_from_file_with_params($0, whisperContextParams) }
         self.params = params
