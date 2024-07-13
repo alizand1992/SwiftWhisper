@@ -12,6 +12,8 @@ public class WhisperParams {
     public init(strategy: WhisperSamplingStrategy = .greedy) {
         self.whisperParams = whisper_full_default_params(whisper_sampling_strategy(rawValue: strategy.rawValue))
         self.max_len = 1
+        self.token_timestamps = true
+        
         self.language = .auto
     }
 
