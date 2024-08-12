@@ -21,7 +21,7 @@ let package = Package(
                     .define("GGML_USE_ACCELERATE", .when(platforms: [.macOS, .macCatalyst, .iOS])),
                     .define("WHISPER_USE_COREML", .when(platforms: [.macOS, .macCatalyst, .iOS])),
                     .define("WHISPER_COREML_ALLOW_FALLBACK", .when(platforms: [.macOS, .macCatalyst, .iOS])),
-                    .unsafeFlags(["-O3"]),
+                    .unsafeFlags(["-O3", "-DGGML_USE_ACCELERATE", "-DWHISPER_USE_COREML", "-DWHISPER_COREML_ALLOW_FALLBACK"]),
                 ]),
         .testTarget(name: "WhisperTests", dependencies: [.target(name: "SwiftWhisper")], resources: [.copy("TestResources/")])
     ],
